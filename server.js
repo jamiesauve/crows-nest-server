@@ -16,15 +16,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/api/hello', (req, res) => {
-	res.send({ serverSays: 'Hello from the back end!' });
-});
-
-app.post('/api/hi', (req, res) => {
-
-	res.send(`POST request received: ${req.body.message}`);
-});
-
 app.get('/api/getWeather', (req, res) => {
 	const {
 		lat,
@@ -41,7 +32,7 @@ app.get('/api/getWeather', (req, res) => {
 			error: false,
 		});
 	}).catch((e) => {
-		console.log('there was an error in the DarkSky call :( - most likely you are offline. ');
+		console.log('There was an error in the DarkSky call :( - most likely you are offline. ');
 		res.send({
 			data: null,
 			error: true
